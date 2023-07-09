@@ -1,4 +1,4 @@
-export let User= [];
+export let Manager= [];
 export class CreateDto
 {
   name:string
