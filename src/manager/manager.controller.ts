@@ -1,6 +1,6 @@
 import { Controller, Get, Post,Body,Param,Patch, Delete } from '@nestjs/common';
 import { ManagerService } from './manager.service';
-import { CreateDto} from './manager.dto';
+import { ManagerRegDTO} from './manager.dto';
 let User=[]
 @Controller()
 export class ManagerController {
@@ -9,7 +9,7 @@ export class ManagerController {
 
   
   @Post('user') //add user
-  createUser(@Body() create:CreateDto){
+  createUser(@Body() create:ManagerRegDTO){
     User.push(create);
     return 'user added'
   }
@@ -31,7 +31,7 @@ findUser(@Param('id') id: number): any {
 
   
   @Patch('user/:id') // Update user by id
-  updateUser(@Param('id') id: number, @Body() update: Partial<CreateDto>): string {
+  updateUser(@Param('id') id: number, @Body() update: Partial<ManagerRegDTO>): string {
     const user = User.find((user) => user.id === id);
     if (!user) {
       return 'User not found';

@@ -16,6 +16,9 @@ export class ManagerEntity {
     @Column()
     password:string;
 
-    @OneToMany(() => UserEntity, user => user.manager)
-        users:UserEntity[];
+    // @OneToMany(() => UserEntity, user => user.manager)
+    //     users:UserEntity[];
+        
+        @OneToMany(() => UserEntity, user => user.manager,{cascade: ["remove"]})
+        users:UserEntity[];    
 }
